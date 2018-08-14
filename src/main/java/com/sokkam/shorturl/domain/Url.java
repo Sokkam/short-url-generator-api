@@ -1,29 +1,21 @@
 package com.sokkam.shorturl.domain;
 
+import com.alibaba.fastjson.JSON;
+
 public class Url {
 
-    private int id;
+    private long id;
 
-    // 域名
-    private String domainName;
-
-    // 原链接
     private String originalUrl;
 
-    public int getId() {
+    private String shortUrl;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getDomainName() {
-        return domainName;
-    }
-
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
     }
 
     public String getOriginalUrl() {
@@ -32,6 +24,19 @@ public class Url {
 
     public void setOriginalUrl(String originalUrl) {
         this.originalUrl = originalUrl;
+    }
+
+    public String getShortUrl() {
+        return shortUrl;
+    }
+
+    public void setShortUrl(String shortUrl) {
+        this.shortUrl = shortUrl;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 
 }

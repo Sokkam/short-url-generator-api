@@ -1,10 +1,14 @@
 package com.sokkam.shorturl.utils;
 
+import com.sokkam.shorturl.constant.UrlPrefix;
+
+/**
+ * 短链接api生成器
+ */
 public class ShortUrlGenerator {
 
     private static final int sextyTwoHex = 62;
 
-    // 0 - z 有62位
     private static final char[] character = {
             '0', '1', '2', '3', '4', '5', '6', '7', '8',
             '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -14,6 +18,10 @@ public class ShortUrlGenerator {
             'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     };
+
+    public static String createShortUrl(String originalUrl, long number) {
+        return UrlPrefix.SOKKAM_URL + changeSixtyTwoHex(number);
+    }
 
     private static String changeSixtyTwoHex(long number) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,10 +36,6 @@ public class ShortUrlGenerator {
         }
         stringBuilder.append(character[(int) number % sextyTwoHex]);
         return stringBuilder.reverse().toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(changeSixtyTwoHex(1000000));
     }
 
 }
