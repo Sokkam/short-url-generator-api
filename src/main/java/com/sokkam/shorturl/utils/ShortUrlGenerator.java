@@ -1,7 +1,5 @@
 package com.sokkam.shorturl.utils;
 
-import com.sokkam.shorturl.constant.UrlPrefix;
-
 /**
  * 短链接api生成器
  */
@@ -19,8 +17,8 @@ public class ShortUrlGenerator {
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     };
 
-    public static String createShortUrl(long number) {
-        return UrlPrefix.SOKKAM_URL + changeSixtyTwoHex(number);
+    static String createShortUrl(long number) {
+        return changeSixtyTwoHex(number);
     }
 
     private static String changeSixtyTwoHex(long number) {
