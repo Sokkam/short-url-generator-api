@@ -11,13 +11,15 @@ import java.util.List;
 
 public class FileOperation {
 
-    private static final String STORAGE_JSON_FILE_PATH = "short_api_storage.json";
+    private static final String SHORT_API_JSON_FILE_PATH = "../data/short_api_storage.json";
 
-    static void writeJsonFile(List<Url> urlList, String filePath) {
+    private static final String CHARACTER_ENCODING = "utf-8";
+
+    static void writeJsonFile(List<Url> urlList) {
         String jsonContent = JSON.toJSONString(urlList);
         try {
             // 设置成true是追加，false是覆盖
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath + STORAGE_JSON_FILE_PATH, false);
+            FileOutputStream fileOutputStream = new FileOutputStream(SHORT_API_JSON_FILE_PATH, false);
             fileOutputStream.write(jsonContent.getBytes());
             fileOutputStream.close();
         } catch (Exception e) {
@@ -25,10 +27,10 @@ public class FileOperation {
         }
     }
 
-    static List<Url> readJsonFile(String filePath) {
+    static List<Url> readJsonFile() {
         try {
-            InputStream inputStream = new FileInputStream(filePath + STORAGE_JSON_FILE_PATH);
-            String jsonString = IOUtils.toString(inputStream, "utf-8");
+            InputStream inputStream = new FileInputStream(SHORT_API_JSON_FILE_PATH);
+            String jsonString = IOUtils.toString(inputStream, CHARACTER_ENCODING);
             inputStream.close();
             return JSON.parseArray(jsonString, Url.class);
         } catch (Exception e) {

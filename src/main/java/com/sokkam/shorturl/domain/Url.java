@@ -8,7 +8,7 @@ public class Url {
 
     private String originalUrl;
 
-    private String shortUrl;
+    private String shortUrlCode;
 
     public long getId() {
         return id;
@@ -26,12 +26,12 @@ public class Url {
         this.originalUrl = originalUrl;
     }
 
-    public String getShortUrl() {
-        return shortUrl;
+    public String getShortUrlCode() {
+        return shortUrlCode;
     }
 
-    public void setShortUrl(String shortUrl) {
-        this.shortUrl = shortUrl;
+    public void setShortUrlCode(String shortUrlCode) {
+        this.shortUrlCode = shortUrlCode;
     }
 
     @Override

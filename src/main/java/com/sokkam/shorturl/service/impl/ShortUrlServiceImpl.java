@@ -17,11 +17,11 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     @Autowired
     private UrlParser parser;
 
-    private static final String ERROR_INFO_PAGE_URL = "localhost:6666/error/html";
+    private static final String ERROR_INFO_PAGE_URL = "http://localhost:8090/shorturl/error";
 
     @Override
     public Url createShortUrl(String url) {
-        return parser.storage(url, "");
+        return parser.storage(url);
     }
 
     @Override
@@ -40,7 +40,6 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }
