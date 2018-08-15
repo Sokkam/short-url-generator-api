@@ -11,12 +11,13 @@ import java.util.List;
 
 public class FileOperation {
 
-    private static final String STORAGE_JSON_FILE_NAME = "short_api_storage.json";
+    private static final String STORAGE_JSON_FILE_PATH = "short_api_storage.json";
 
-    static void writeJsonFile(List<Url> urlList) {
+    static void writeJsonFile(List<Url> urlList, String filePath) {
         String jsonContent = JSON.toJSONString(urlList);
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(parserPath(), true);
+            // 设置成true是追加，false是覆盖
+            FileOutputStream fileOutputStream = new FileOutputStream(filePath + STORAGE_JSON_FILE_PATH, false);
             fileOutputStream.write(jsonContent.getBytes());
             fileOutputStream.close();
         } catch (Exception e) {
@@ -24,9 +25,9 @@ public class FileOperation {
         }
     }
 
-    static List<Url> readJsonFile() {
+    static List<Url> readJsonFile(String filePath) {
         try {
-            InputStream inputStream = new FileInputStream(parserPath());
+            InputStream inputStream = new FileInputStream(filePath + STORAGE_JSON_FILE_PATH);
             String jsonString = IOUtils.toString(inputStream, "utf-8");
             inputStream.close();
             return JSON.parseArray(jsonString, Url.class);
@@ -34,10 +35,6 @@ public class FileOperation {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private static String parserPath() {
-        return FileOperation.class.getClassLoader().getResource(STORAGE_JSON_FILE_NAME).getPath();
     }
 
 }

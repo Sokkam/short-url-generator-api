@@ -19,7 +19,7 @@ public class ShortUrlGenerator {
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
     };
 
-    public static String createShortUrl(String originalUrl, long number) {
+    public static String createShortUrl(long number) {
         return UrlPrefix.SOKKAM_URL + changeSixtyTwoHex(number);
     }
 
