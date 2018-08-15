@@ -45,3 +45,5 @@ ls
 java -jar shorturl-1.0-SNAPSHOT.jar
 ```
 * 运行完后无报错即可访问
+## 演示
+[image](https://github.com/Sokkam/company_short_url_api/blob/master/gif/show.gif)
